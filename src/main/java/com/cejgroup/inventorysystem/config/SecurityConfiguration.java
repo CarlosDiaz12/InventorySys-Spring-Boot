@@ -1,6 +1,6 @@
 package com.cejgroup.inventorysystem.config;
 
-import com.cejgroup.inventorysystem.domain.interfaces.IUserService;
+import com.cejgroup.inventorysystem.domain.interfaces.User.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

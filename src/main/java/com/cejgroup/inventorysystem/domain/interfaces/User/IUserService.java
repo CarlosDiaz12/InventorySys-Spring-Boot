@@ -1,4 +1,4 @@
-package com.cejgroup.inventorysystem.domain.interfaces;
+package com.cejgroup.inventorysystem.domain.interfaces.User;
 
 import com.cejgroup.inventorysystem.domain.entities.User;
 import com.cejgroup.inventorysystem.dto.RegisterUserDto;

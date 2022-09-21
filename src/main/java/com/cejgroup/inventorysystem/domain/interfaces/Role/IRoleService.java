@@ -1,4 +1,4 @@
-package com.cejgroup.inventorysystem.domain.interfaces;
+package com.cejgroup.inventorysystem.domain.interfaces.Role;
 
 import com.cejgroup.inventorysystem.domain.entities.Role;
 

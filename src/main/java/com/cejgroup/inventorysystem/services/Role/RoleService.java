@@ -1,11 +1,9 @@
-package com.cejgroup.inventorysystem.services;
+package com.cejgroup.inventorysystem.services.Role;
 
 import com.cejgroup.inventorysystem.domain.entities.Role;
-import com.cejgroup.inventorysystem.domain.interfaces.IRoleRepository;
-import com.cejgroup.inventorysystem.domain.interfaces.IRoleService;
-import com.cejgroup.inventorysystem.domain.interfaces.IUserRepository;
+import com.cejgroup.inventorysystem.domain.interfaces.Role.IRoleRepository;
+import com.cejgroup.inventorysystem.domain.interfaces.Role.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service

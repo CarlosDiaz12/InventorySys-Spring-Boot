@@ -1,7 +1,6 @@
 package com.cejgroup.inventorysystem.controllers;
 
-import com.cejgroup.inventorysystem.domain.entities.User;
-import com.cejgroup.inventorysystem.domain.interfaces.IUserService;
+import com.cejgroup.inventorysystem.domain.interfaces.User.IUserService;
 import com.cejgroup.inventorysystem.dto.RegisterUserDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +18,7 @@ public class AuthController {
 
     @GetMapping("/auth/register")
     public String registerUser(Model model){
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new RegisterUserDto());
         return "/auth/register";
     }
 

@@ -1,11 +1,10 @@
-package com.cejgroup.inventorysystem.services;
+package com.cejgroup.inventorysystem.services.User;
 
-import antlr.actions.python.CodeLexer;
 import com.cejgroup.inventorysystem.domain.entities.Role;
 import com.cejgroup.inventorysystem.domain.entities.User;
-import com.cejgroup.inventorysystem.domain.interfaces.IRoleRepository;
-import com.cejgroup.inventorysystem.domain.interfaces.IUserRepository;
-import com.cejgroup.inventorysystem.domain.interfaces.IUserService;
+import com.cejgroup.inventorysystem.domain.interfaces.Role.IRoleRepository;
+import com.cejgroup.inventorysystem.domain.interfaces.User.IUserRepository;
+import com.cejgroup.inventorysystem.domain.interfaces.User.IUserService;
 import com.cejgroup.inventorysystem.dto.RegisterUserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
