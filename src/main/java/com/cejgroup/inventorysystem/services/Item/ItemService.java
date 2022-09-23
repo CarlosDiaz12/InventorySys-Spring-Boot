@@ -6,6 +6,7 @@ import com.cejgroup.inventorysystem.domain.interfaces.InventoryType.IInventoryTy
 import com.cejgroup.inventorysystem.domain.interfaces.Item.IItemRepository;
 import com.cejgroup.inventorysystem.domain.interfaces.Item.IItemService;
 import com.cejgroup.inventorysystem.dto.CreateEditItemDto;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,9 +61,12 @@ public class ItemService implements IItemService {
     }
 
     @Override
-    public Item getById(Long id) {
-        // refactor this
-        return itemRepository.findById(id).get();
+    public Item getById(Long id) throws NotFoundException {
+        var item = itemRepository.findById(id);
+        if(!item.isPresent())
+            throw new NotFoundException("No se encuentra el articulo");
+
+        return item.get();
     }
 
     @Override

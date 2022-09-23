@@ -21,7 +21,7 @@
   </div>
   <div class="row mt-3">
     <div class="col-md-5">
-      <form th:action="@{/item/create}" method="post" th:object="${item}">
+      <form th:action="@{/item/edit}" method="post" th:object="${item}">
         <input type="text" hidden  th:field="*{id}">
         <div class="form-group">
           <label for="description">Descripcion</label>

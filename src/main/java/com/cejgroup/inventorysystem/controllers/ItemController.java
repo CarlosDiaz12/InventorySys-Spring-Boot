@@ -1,12 +1,10 @@
 package com.cejgroup.inventorysystem.controllers;
 
 import com.cejgroup.inventorysystem.domain.entities.InventoryType;
-import com.cejgroup.inventorysystem.domain.entities.Item;
 import com.cejgroup.inventorysystem.domain.interfaces.InventoryType.IInventoryTypeService;
 import com.cejgroup.inventorysystem.domain.interfaces.Item.IItemService;
 import com.cejgroup.inventorysystem.dto.CreateEditItemDto;
-import com.cejgroup.inventorysystem.dto.CreateItemDto;
-import com.cejgroup.inventorysystem.dto.RegisterUserDto;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,15 +50,15 @@ public class ItemController {
     }
 
     @GetMapping("/item/edit/{id}")
-    public ModelAndView editView(@PathVariable("id") Long id, odel model) {
-        var returnModel = new ModelAndView("/item/create");
-        // recibir parametro y obtener el item desde la db;
-        CreateEditItemDto item = new CreateEditItemDto();
+    public ModelAndView editView(@PathVariable("id") Long id) throws NotFoundException {
+        var returnModel = new ModelAndView("/item/edit");
 
+        var item = itemService.getById(id);
+        CreateEditItemDto itemToEdit = itemService.mapEntityToDto(item);
         Collection<InventoryType> inventoryTypeCollection = inventoryTypeService.getAll();
 
         returnModel.addObject("inventoryTypes", inventoryTypeCollection);
-        returnModel.addObject("item", item);
+        returnModel.addObject("item", itemToEdit);
 
         return returnModel;
     }

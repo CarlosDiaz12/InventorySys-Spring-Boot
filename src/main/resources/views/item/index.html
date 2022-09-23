@@ -35,7 +35,7 @@
             <th th:text="${item.unitPrice}"></th>
             <th th:text="${item.status}"></th>
             <th>
-                <button class="btn btn-info btn-sm">Editar</button>
+                <a th:href="@{/item/edit/} + ${item.id}" class="btn btn-info btn-sm">Editar</a>
                 <button class="btn btn-danger btn-sm">Eliminar</button>
             </th>
         </tr>
