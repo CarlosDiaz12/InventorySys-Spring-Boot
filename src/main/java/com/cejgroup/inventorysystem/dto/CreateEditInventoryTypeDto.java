@@ -1,34 +1,20 @@
-package com.cejgroup.inventorysystem.domain.entities;
+package com.cejgroup.inventorysystem.dto;
 
-import groovyjarjarantlr4.v4.runtime.misc.NotNull;
-import org.hibernate.annotations.ColumnDefault;
-
-import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
-@Table(name = "InventoryTypes")
-@Entity
-public class InventoryType {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @NotNull
-    private String description;
+public class CreateEditInventoryTypeDto {
 
-    public InventoryType(String description, int accountantAccount, boolean status) {
+    public CreateEditInventoryTypeDto (Long id, String description, int accountantAccount, boolean status){
         this.id = id;
         this.description = description;
         this.accountantAccount = accountantAccount;
         this.status = status;
     }
 
-    @javax.validation.constraints.NotNull(message = "Requerido")
-    @Min(0)
-    private int accountantAccount;
-
-    @NotNull
-    @ColumnDefault(value = "0")
-    private boolean status;
+    private Long id;
 
     public Long getId() {
         return id;
@@ -37,6 +23,15 @@ public class InventoryType {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @NotEmpty(message = "Requerido")
+    private String description;
+
+    @NotNull(message = "Requerido")
+    @Min(0)
+    private int accountantAccount;
+
+    private boolean status;
 
     public String getDescription() {
         return description;
