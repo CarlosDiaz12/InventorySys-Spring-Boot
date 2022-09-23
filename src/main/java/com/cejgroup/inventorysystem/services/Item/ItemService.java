@@ -70,6 +70,15 @@ public class ItemService implements IItemService {
     }
 
     @Override
+    public void deleteById(Long id) throws NotFoundException {
+        var item = itemRepository.findById(id);
+        if(!item.isPresent())
+            throw new NotFoundException("No se encuentra el articulo");
+
+        itemRepository.deleteById(id);
+    }
+
+    @Override
     public CreateEditItemDto mapEntityToDto(Item item) {
         return new CreateEditItemDto(
           item.getId(),

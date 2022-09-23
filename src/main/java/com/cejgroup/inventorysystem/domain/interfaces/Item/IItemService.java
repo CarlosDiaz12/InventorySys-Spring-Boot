@@ -12,5 +12,6 @@ public interface IItemService {
     void add(CreateEditItemDto dto) throws Exception;
     void edit(CreateEditItemDto dto) throws Exception;
     Item getById(Long id) throws NotFoundException;
+    void deleteById(Long id) throws NotFoundException;
     CreateEditItemDto mapEntityToDto(Item item);
 }

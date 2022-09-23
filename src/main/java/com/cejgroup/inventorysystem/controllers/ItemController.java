@@ -83,4 +83,10 @@ public class ItemController {
         returnModel.addObject("items", itemService.getAll());
         return returnModel;
     }
+    @GetMapping("/item/delete/{id}")
+    public ModelAndView deleteItem(@PathVariable("id") Long id) throws NotFoundException{
+        var returnModel = new ModelAndView("redirect:/item/index");
+        itemService.deleteById(id);
+        return returnModel;
+    }
 }

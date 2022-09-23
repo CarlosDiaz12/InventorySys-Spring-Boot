@@ -36,7 +36,7 @@
             <th th:text="${item.status}"></th>
             <th>
                 <a th:href="@{/item/edit/} + ${item.id}" class="btn btn-info btn-sm">Editar</a>
-                <button class="btn btn-danger btn-sm">Eliminar</button>
+                <a th:href="@{/item/delete/} + ${item.id}" onclick="return confirm('Seguro que desea eliminar este registro?');" class="btn btn-danger btn-sm">Eliminar</a>
             </th>
         </tr>
         </tbody>
