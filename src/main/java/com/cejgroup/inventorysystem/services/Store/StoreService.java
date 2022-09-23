@@ -43,7 +43,6 @@ public class StoreService implements IStoreService {
     }
 
     public void edit(CreateOrUpdateStoreDto createOrUpdateStoreDto) {
-
         Store store = storeRepository.findById(createOrUpdateStoreDto.getId()).get();
         store.setDescription(createOrUpdateStoreDto.getDescription());
         store.setStatus(createOrUpdateStoreDto.isStatus());

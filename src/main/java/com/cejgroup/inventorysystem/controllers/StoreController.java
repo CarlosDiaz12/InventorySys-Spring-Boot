@@ -1,8 +1,6 @@
 package com.cejgroup.inventorysystem.controllers;
 
 import com.cejgroup.inventorysystem.domain.interfaces.Store.IStoreService;
-import com.cejgroup.inventorysystem.domain.interfaces.User.IUserService;
-import com.cejgroup.inventorysystem.dto.RegisterUserDto;
 import com.cejgroup.inventorysystem.dto.store.CreateOrUpdateStoreDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +26,7 @@ public class StoreController {
     @GetMapping("/store/create")
     public String create(Model model){
         model.addAttribute("store", new CreateOrUpdateStoreDto());
-        return "/store/create";
+        return "store/createOrEdit";
     }
 
     @GetMapping("/store/edit/{id}")
@@ -39,18 +37,24 @@ public class StoreController {
         }
         store.setEditing(true);
         model.addAttribute("store", store);
-        return "/store/create";
+        return "store/createOrEdit";
     }
 
     @PostMapping("/store/create")
     public String create(@ModelAttribute("store")CreateOrUpdateStoreDto createOrUpdateStoreDto){
         storeService.create(createOrUpdateStoreDto);
-        return "/store/index";
+        return "redirect:/store";
     }
 
     @PostMapping("/store/edit")
     public String edit(@ModelAttribute("store")CreateOrUpdateStoreDto createOrUpdateStoreDto){
         storeService.edit(createOrUpdateStoreDto);
+        return "redirect:/store";
+    }
+
+    @GetMapping("/store/delete/{id}")
+    public String edit(@PathVariable Long id){
+        storeService.delete(id);
         return "redirect:/store";
     }
 }

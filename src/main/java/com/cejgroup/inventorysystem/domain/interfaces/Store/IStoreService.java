@@ -10,4 +10,5 @@ public interface IStoreService {
     CreateOrUpdateStoreDto getById(long id);
     void create(CreateOrUpdateStoreDto createOrUpdateStoreDto);
     void edit(CreateOrUpdateStoreDto createOrUpdateStoreDto);
+    void delete(long id);
 }

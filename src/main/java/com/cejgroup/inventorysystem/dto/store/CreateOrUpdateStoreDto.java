@@ -33,6 +33,10 @@ public class CreateOrUpdateStoreDto {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public boolean isEditing() {
         return isEditing;
     }
@@ -41,7 +45,6 @@ public class CreateOrUpdateStoreDto {
         isEditing = editing;
     }
 
-    @NotNull
     private Long id;
     @NotNull
     private String description;

@@ -13,11 +13,9 @@
         <h3 th:if="${!store.isEditing()}">Agregar almacen</h3>
         <h3 th:if="${store.isEditing()}">Editar almacen</h3>
     </div>
+    <form th:action="@{${store.isEditing() ? '/store/edit' : '/store/create'}}" method="post" class="mt-2">
         <div class="row">
-<!--            <div class="mb-3 col-6">-->
-<!--                <label for="storeId" class="form-label">Id</label>-->
-<!--                <input th:field="*{id}" type="text" class="form-control" id="storeId" placeholder="Introduzca la descripcion aqui...">-->
-<!--            </div>-->
+            <input th:field="*{id}" type="hidden" id="storeId">
             <div class="mb-3 col-6">
                 <label for="description" class="form-label">Descripcion</label>
                 <input th:field="*{description}" type="text" class="form-control" id="description" placeholder="Introduzca la descripcion aqui..." required>

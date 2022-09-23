@@ -5,12 +5,12 @@
       layout:decorate="/shared/_layout">
 <head>
     <meta charset="UTF-8">
-    <title>Listado de almacenes</title>
+    <title>Gestion de almacenes</title>
 </head>
 <body>
 <div layout:fragment="content">
     <div class="d-flex justify-content-between mt-5">
-        <h3>Gestion de almacen</h3>
+        <h3>Gestion de almacenes</h3>
         <a th:href="@{/store/create}" class="btn btn-primary">+ Agregar</a>
     </div>
     <div class="row justify-content-center mt-2">
@@ -31,7 +31,7 @@
                 <td th:if="${!store.status}">Inactivo</td>
                 <td>
                     <a th:href="@{/store/edit/__${store.id}__}" class="btn btn-primary">Editar</a>
-                    <button type="button" class="btn btn-danger">Eliminar</button>
+                    <a th:href="@{/store/delete/__${store.id}__}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             </tbody>
