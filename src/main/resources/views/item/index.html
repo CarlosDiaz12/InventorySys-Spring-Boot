@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="/shared/_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Item Index</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="row mb-2">
+        <h2>Gestión de Articulos</h2>
+    </div>
+    <div class="row">
+        <a th:href="@{/item/create}" class="btn btn-success">Agregar</a>
+    <table class="table table-striped mt-2">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Tipo Inventario</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Precio Unitario</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item :${items}">
+            <th th:text="${item.id}"></th>
+            <th th:text="${item.description}"></th>
+            <th th:text="${item.inventoryType.description}"></th>
+            <th th:text="${item.stock}"></th>
+            <th th:text="${item.unitPrice}"></th>
+            <th th:text="${item.status}"></th>
+            <th>
+                <a th:href="@{/item/edit/} + ${item.id}" class="btn btn-info btn-sm">Editar</a>
+                <a th:href="@{/item/delete/} + ${item.id}" onclick="return confirm('Seguro que desea eliminar este registro?');" class="btn btn-danger btn-sm">Eliminar</a>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="/shared/_layout">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Articulo</title>
+  <style>
+    label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Editar Articulo</h2>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-5">
+      <form th:action="@{/item/edit}" method="post" th:object="${item}">
+        <input type="text" hidden  th:field="*{id}">
+        <div class="form-group">
+          <label for="description">Descripcion</label>
+          <input th:field="*{description}" th:errorClass="'form-control is-invalid'" type="text" class="form-control" id="description">
+          <small class="form-text text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></small>
+        </div>
+        <div class="form-group">
+          <label for="stock">Stock</label>
+          <input  th:field="*{stock}" th:errorClass="'form-control is-invalid'" type="number" min="0" class="form-control" id="stock">
+          <small class="form-text text-danger" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></small>
+        </div>
+        <div class="form-group">
+          <label for="unitPrice">Precio Unitario</label>
+          <input  th:field="*{unitPrice}" th:errorClass="'form-control is-invalid'" type="number" min="0" class="form-control" id="unitPrice">
+          <small class="form-text text-danger" th:if="${#fields.hasErrors('unitPrice')}" th:errors="*{unitPrice}"></small>
+        </div>
+        <div class="form-group">
+          <label for="inventoryType">Tipo Inventario</label>
+          <select  th:field="*{inventoryType}" th:errorClass="'form-control is-invalid'" class="form-control" id="inventoryType">
+            <option value="0" selected>Elige...</option>
+            <option th:each="item :${inventoryTypes}" th:value="${item.id}"  th:text="${item.description}"></option>
+          </select>
+          <small class="form-text text-danger" th:if="${#fields.hasErrors('inventoryType')}" th:errors="*{inventoryType}"></small>
+        </div>
+        <div class="form-check">
+          <input th:field="*{status}" type="checkbox" class="form-check-input" id="status">
+          <label class="form-check-label" for="status">Estado</label>
+        </div>
+        <div class="form-group mt-2">
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

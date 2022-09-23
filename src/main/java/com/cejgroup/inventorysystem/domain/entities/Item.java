@@ -5,6 +5,7 @@ import net.bytebuddy.implementation.bind.annotation.Default;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Table(name = "Items")
 @Entity
@@ -16,6 +17,16 @@ public class Item {
         UnitPrice = unitPrice;
         this.status = status;
     }
+
+    public Item(Long id, String description, InventoryType inventoryType, Long stock, Double unitPrice, boolean status) {
+        this.id = id;
+        this.description = description;
+        this.inventoryType = inventoryType;
+        this.stock = stock;
+        UnitPrice = unitPrice;
+        this.status = status;
+    }
+
     public Item() {
     }
     @Id
