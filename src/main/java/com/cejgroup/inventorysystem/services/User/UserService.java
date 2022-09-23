@@ -32,12 +32,10 @@ public class UserService implements IUserService {
 
     @Override
     public User register(RegisterUserDto dto) {
-        Role basicRole;
-        try {
-            basicRole = roleRepository.findByName("USER");
-        } catch (Exception e) {
+        var basicRole = roleRepository.findByName("USER");
+        if(basicRole == null)
             basicRole = new Role("USER");
-        }
+
         User newUser = new User(
                 dto.getName(),
                 dto.getUserName(),
