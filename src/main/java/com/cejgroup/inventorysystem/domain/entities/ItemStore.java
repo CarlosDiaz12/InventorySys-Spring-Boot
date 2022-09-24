@@ -23,4 +23,37 @@ public class ItemStore {
 
     @NotNull
     private int quantity;
+
+    public ItemStore() {
+    }
+
+    public ItemStore(Item item, Store store, int quantity) {
+        this.item = item;
+        this.store = store;
+        this.quantity = quantity;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 }

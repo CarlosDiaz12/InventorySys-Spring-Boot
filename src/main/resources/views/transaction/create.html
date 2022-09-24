@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="/shared/_layout">
+<head>
+  <meta charset="UTF-8">
+  <title>Crear Articulo</title>
+  <style>
+    label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Agregar Transaccion</h2>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-10">
+      <form th:action="@{/transaction/create}" method="post" th:object="${transaction}">
+        <div class="row" th:if="${errorMessage != null}">
+          <div class="col-md-5">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong th:text="${errorMessage}">Error</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="item">Articulo</label>
+              <select  th:field="*{item}" th:errorClass="'form-control is-invalid'" class="form-control" id="item">
+                <option value="0" selected>Elige...</option>
+                <option th:each="item :${items}" th:value="${item.id}"  th:text="${item.description}"></option>
+              </select>
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('item')}" th:errors="*{item}"></small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="store">Almacen</label>
+              <select  th:field="*{store}" th:errorClass="'form-control is-invalid'" class="form-control" id="store">
+                <option value="0" selected>Elige...</option>
+
+              </select>
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('store')}" th:errors="*{store}"></small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="destinationStore">Almacen Destino</label>
+              <select disabled="true"  th:field="*{destinationStore}" th:errorClass="'form-control is-invalid'" class="form-control" id="destinationStore">
+                <option value="0" selected>Elige...</option>
+              </select>
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('destinationStore')}" th:errors="*{destinationStore}"></small>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="transactionType">Tipo Transaccion</label>
+              <select  th:field="*{transactionType}" th:errorClass="'form-control is-invalid'" class="form-control" id="transactionType">
+                <option value="0" selected>Elige...</option>
+                <option th:each="item :${transactionTypes}" th:value="${item}"  th:text="${item}"></option>
+              </select>
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('transactionType')}" th:errors="*{transactionType}"></small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="quantity">Cantidad</label>
+                <input  th:field="*{quantity}" th:errorClass="'form-control is-invalid'" type="number" min="0" class="form-control" id="quantity">
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></small>
+              </div>
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="cost">Costo</label>
+              <input  th:field="*{cost}" th:errorClass="'form-control is-invalid'" type="number" min="0" class="form-control" id="cost">
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('cost')}" th:errors="*{cost}"></small>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mt-2">
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+<th:block layout:fragment="script">
+<script type="text/javascript" th:src="@{/transaction.js}"></script>
+  <script>
+</body>
+</html>

@@ -2,17 +2,19 @@ package com.cejgroup.inventorysystem.services.Item;
 
 import com.cejgroup.inventorysystem.domain.entities.InventoryType;
 import com.cejgroup.inventorysystem.domain.entities.Item;
+import com.cejgroup.inventorysystem.domain.entities.ItemStore;
+import com.cejgroup.inventorysystem.domain.entities.Store;
 import com.cejgroup.inventorysystem.domain.interfaces.InventoryType.IInventoryTypeRepository;
 import com.cejgroup.inventorysystem.domain.interfaces.Item.IItemRepository;
 import com.cejgroup.inventorysystem.domain.interfaces.Item.IItemService;
+import com.cejgroup.inventorysystem.domain.interfaces.ItemStore.IItemStoreRepository;
 import com.cejgroup.inventorysystem.dto.CreateEditItemDto;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ItemService implements IItemService {
@@ -20,8 +22,33 @@ public class ItemService implements IItemService {
     private IItemRepository itemRepository;
     @Autowired
     private IInventoryTypeRepository inventoryTypeRepository;
+
+    @Autowired
+    private IItemStoreRepository itemStoreRepository;
     public List<Item> getAll() {
         return itemRepository.findAll();
+    }
+
+    @Override
+    public List<Store> getItemStores(Long id) {
+        var item = itemRepository.findById(id);
+        List<Store> stores = new ArrayList<Store>();
+        if(item.isPresent()) {
+            Collection<ItemStore> itemStores = itemStoreRepository.findByItem(item.get());
+            stores = itemStores.stream().map(s -> s.getStore()).collect(Collectors.toList());
+        }
+        return stores;
+    }
+
+    @Override
+    public List<Store> getNotInItemStores(Long id) {
+        var item = itemRepository.findById(id);
+        List<Store> stores = new ArrayList<Store>();
+        if(item.isPresent()) {
+            Collection<ItemStore> itemStores = itemStoreRepository.findByItemNotIn(Arrays.asList(item.get()));
+            stores = itemStores.stream().map(s -> s.getStore()).collect(Collectors.toList());
+        }
+        return stores;
     }
 
     @Override

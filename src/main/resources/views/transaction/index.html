@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="/shared/_layout">
+<head>
+  <meta charset="UTF-8">
+  <title>Item Index</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="row mb-2">
+    <h2>Gestión de Transacciones</h2>
+  </div>
+  <div class="row">
+    <a th:href="@{/transaction/create}" class="btn btn-success">Agregar</a>
+    <table class="table table-striped mt-2">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Articulo</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Costo</th>
+        <th scope="col">Tipo Transaccion</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="transaction :${transactions}">
+        <th th:text="${transaction.id}"></th>
+        <th th:text="${transaction.item.description}"></th>
+        <th th:text="${transaction.quantity}"></th>
+        <th th:text="${transaction.cost}"></th>
+        <th th:text="${transaction.transactionType}"></th>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>
