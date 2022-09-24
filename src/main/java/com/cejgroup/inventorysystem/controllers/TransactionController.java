@@ -39,7 +39,6 @@ public class TransactionController {
     public String createTransaction(Model model){
         model.addAttribute("transaction", new CreateTransactionDto());
         model.addAttribute("items", itemService.getAll());
-        model.addAttribute("stores", storeService.getAll());
         model.addAttribute("transactionTypes", transactionService.getTransactionTypes());
         return "/transaction/create";
     }
@@ -49,8 +48,11 @@ public class TransactionController {
         try{
 
 
+
         }catch (Exception e) {
             model.addAttribute("errorMessage", e.getMessage());
+            model.addAttribute("items", itemService.getAll());
+            model.addAttribute("transactionTypes", transactionService.getTransactionTypes());
         }
         return "/transaction/create";
     }
