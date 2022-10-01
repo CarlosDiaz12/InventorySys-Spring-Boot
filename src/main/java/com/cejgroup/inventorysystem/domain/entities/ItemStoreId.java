@@ -1,5 +1,6 @@
 package com.cejgroup.inventorysystem.domain.entities;
 
+import javax.persistence.JoinColumn;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -7,14 +8,14 @@ public class ItemStoreId implements Serializable {
     public ItemStoreId() {
     }
 
-    public ItemStoreId(Item item, Store store) {
-        this.item = item;
-        this.store = store;
+    public ItemStoreId(Long itemId, Long storeId) {
+        this.itemId = itemId;
+        this.storeId = storeId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(item, store);
+        return Objects.hash(itemId, storeId);
     }
 
     @Override
@@ -22,27 +23,26 @@ public class ItemStoreId implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ItemStoreId itemStoreId = (ItemStoreId) o;
-        return item.getId().equals(itemStoreId.item.getId()) &&
-                store.getId().equals(itemStoreId.store.getId());
+        return itemId.equals(itemStoreId.itemId) &&
+                storeId.equals(itemStoreId.storeId);
     }
 
-    public Item getItem() {
-        return item;
+    public Long getItemId() {
+        return itemId;
     }
 
-    public void setItem(Item item) {
-        this.item = item;
+    public void setItemId(Long itemId) {
+        this.itemId = itemId;
     }
 
-    public Store getStore() {
-        return store;
+    public Long getStoreId() {
+        return storeId;
     }
 
-    public void setStore(Store store) {
-        this.store = store;
+    public void setStoreId(Long storeId) {
+        this.storeId = storeId;
     }
 
-    private Item item;
-
-    private Store store;
+    private Long itemId;
+    private Long storeId;
 }

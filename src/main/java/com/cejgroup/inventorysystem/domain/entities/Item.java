@@ -27,6 +27,10 @@ public class Item {
         this.status = status;
     }
 
+    public Item(Long id) {
+        this.id = id;
+    }
+
     public Item() {
     }
     @Id
