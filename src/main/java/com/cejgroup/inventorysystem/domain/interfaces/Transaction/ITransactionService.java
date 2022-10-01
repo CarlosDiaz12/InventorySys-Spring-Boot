@@ -9,5 +9,5 @@ import java.util.Collection;
 public interface ITransactionService {
     Collection<Transaction> getAll();
     Collection<TransactionType> getTransactionTypes();
-    void save(CreateTransactionDto dto);
+    void save(CreateTransactionDto dto) throws Exception;
 }

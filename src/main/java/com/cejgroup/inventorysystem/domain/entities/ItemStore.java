@@ -8,17 +8,21 @@ import javax.persistence.*;
 @Entity
 @IdClass(ItemStoreId.class)
 public class ItemStore {
+    @Id
+    private Long itemId;
 
     @Id
+    private Long storeId;
+    @Id
     @NotNull
-    @ManyToOne
-    @JoinColumn(name = "item_id")
+    @ManyToOne()
+    @JoinColumn(name = "itemId", referencedColumnName = "id",insertable = false, updatable = false)
     private Item item;
 
     @Id
     @NotNull
-    @ManyToOne
-    @JoinColumn(name = "store_id")
+    @ManyToOne()
+    @JoinColumn(name = "storeId", referencedColumnName = "id",insertable = false, updatable = false)
     private Store store;
 
     @NotNull
@@ -27,9 +31,14 @@ public class ItemStore {
     public ItemStore() {
     }
 
-    public ItemStore(Item item, Store store, int quantity) {
-        this.item = item;
-        this.store = store;
+    public ItemStore(Long itemId, Long storeId) {
+        this.itemId = itemId;
+        this.storeId = storeId;
+    }
+
+    public ItemStore(Long itemId, Long storeId, int quantity) {
+        this.itemId = itemId;
+        this.storeId = storeId;
         this.quantity = quantity;
     }
 

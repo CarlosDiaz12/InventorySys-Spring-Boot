@@ -23,7 +23,7 @@
     <div class="col-md-10">
       <form th:action="@{/transaction/create}" method="post" th:object="${transaction}">
         <div class="row" th:if="${errorMessage != null}">
-          <div class="col-md-5">
+          <div class="col-md-8">
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
               <strong th:text="${errorMessage}">Error</strong>
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -90,7 +90,7 @@
           <div class="col-md-4">
             <div class="form-group">
               <label for="cost">Costo</label>
-              <input  th:field="*{cost}" th:errorClass="'form-control is-invalid'" type="number" min="0" class="form-control" id="cost">
+              <input  th:field="*{cost}" th:errorClass="'form-control is-invalid'" type="number" min="1" class="form-control" id="cost">
               <small class="form-text text-danger" th:if="${#fields.hasErrors('cost')}" th:errors="*{cost}"></small>
             </div>
           </div>

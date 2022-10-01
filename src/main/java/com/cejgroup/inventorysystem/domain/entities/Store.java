@@ -17,6 +17,10 @@ public class Store {
         this.status = status;
     }
 
+    public Store(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }
