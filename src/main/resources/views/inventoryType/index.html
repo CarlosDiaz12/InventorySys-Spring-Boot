@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="/shared/_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory Index</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="row mb-2">
+        <h2>Gestión de Inventario</h2>
+    </div>
+    <div class="row">
+        <a th:href="@{/inventoryType/create}" class="btn btn-success">Agregar</a>
+        <table class="table table-striped mt-2">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Cuenta Contable</th>
+                <th scope="col">Estado</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="inventoryType :${inventoryTypes}">
+                <th th:text="${inventoryType.id}"></th>
+                <th th:text="${inventoryType.description}"></th>
+                <th th:text="${inventoryType.accountantAccount}"></th>
+                <th th:text="${inventoryType.status}"></th>
+                <th>
+                    <a th:href="@{/inventoryType/edit/} + ${inventoryType.id}" class="btn btn-info btn-sm">Editar</a>
+                    <a th:href="@{/inventoryType/delete/} + ${inventoryType.id}" onclick="return confirm('Seguro que desea eliminar este registro?');" class="btn btn-danger btn-sm">Eliminar</a>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
