@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="/shared/_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Cuenta Contable</title>
+    <style>
+    label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Agregar Cuenta Contable</h2>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-5">
+            <form th:action="@{/inventoryType/create}" method="post" th:object="${inventoryType}">
+                <div class="form-group">
+                    <label for="description">Descripcion</label>
+                    <input th:field="*{description}" th:errorClass="'form-control is-invalid'" type="text" class="form-control" id="description">
+                    <small class="form-text text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="accountantAccount">Cuenta Contable</label>
+                    <input th:field="*{accountantAccount}" th:errorClass="'form-control is-invalid'" type="text" class="form-control" id="accountantAccount">
+                    <small class="form-text text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{accountantAccount}"></small>
+                </div>
+
+                <div class="form-check">
+                    <input th:field="*{status}" type="checkbox" class="form-check-input" id="status">
+                    <label class="form-check-label" for="status">Estado</label>
+                </div>
+                <div class="form-group mt-2">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -15,6 +15,9 @@ public class InventoryType {
     @NotNull
     private String description;
 
+    public InventoryType() {
+    }
+
     public InventoryType(String description, int accountantAccount, boolean status) {
         this.id = id;
         this.description = description;
@@ -46,11 +49,11 @@ public class InventoryType {
         this.description = description;
     }
 
-    public int getaccountantAccount() {
+    public int getAccountantAccount() {
         return accountantAccount;
     }
 
-    public void setaccountantAccount(int accountantAccount) {
+    public void setAccountantAccount(int accountantAccount) {
         this.accountantAccount = accountantAccount;
     }
 

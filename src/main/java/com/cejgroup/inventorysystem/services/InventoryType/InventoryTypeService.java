@@ -41,7 +41,7 @@ public class InventoryTypeService implements IInventoryTypeService {
 
         InventoryType editInventoryType = inventoryType.get();
         editInventoryType.setDescription(dto.getDescription());
-        editInventoryType.setaccountantAccount(dto.getaccountantAccount());
+        editInventoryType.setAccountantAccount(dto.getaccountantAccount());
         editInventoryType.setStatus(dto.isStatus());
         inventoryTypeRepository.save(editInventoryType);
     }
@@ -70,7 +70,7 @@ public class InventoryTypeService implements IInventoryTypeService {
         return new CreateEditInventoryTypeDto(
                 inventoryType.getId(),
                 inventoryType.getDescription(),
-                inventoryType.getaccountantAccount(),
+                inventoryType.getAccountantAccount(),
                 inventoryType.isStatus()
         );
     }

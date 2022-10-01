@@ -7,6 +7,10 @@ import javax.validation.constraints.NotNull;
 
 public class CreateEditInventoryTypeDto {
 
+    public CreateEditInventoryTypeDto(){
+        this.status = true;
+    }
+
     public CreateEditInventoryTypeDto (Long id, String description, int accountantAccount, boolean status){
         this.id = id;
         this.description = description;
